@@ -1,0 +1,69 @@
+# First matching pattern wins. Unmatched commands fall through to `default`.
+default: BLOCK
+commands:
+
+  # ---- Python: safe to run -------------------------------------------
+  - pattern: "^pytest( .*)?$"
+    policy: ALLOW
+    purpose: run tests
+  - pattern: "^python -m pytest( .*)?$"
+    policy: ALLOW
+  - pattern: "^ls( .*)?$"
+    policy: ALLOW
+
+  # ---- Node: safe to run ---------------------------------------------
+  - pattern: "^npm (test|run test)( .*)?$"
+    policy: ALLOW
+    purpose: run tests
+  - pattern: "^npm run (build|lint|typecheck)( .*)?$"
+    policy: ALLOW
+  - pattern: "^npx (jest|vitest)( .*)?$"
+    policy: ALLOW
+  - pattern: "^node --test( .*)?$"
+    policy: ALLOW
+  - pattern: "^ng (test|build|lint)( .*)?$"
+    policy: ALLOW
+  - pattern: "^npm audit( .*)?$"
+    policy: ALLOW
+    purpose: read-only vulnerability report
+
+  # ---- Installing anything needs a human ------------------------------
+  - pattern: "^pip install .*"
+    policy: ASK
+    rule: RULE-DEP-002
+  - pattern: "^npm (install|ci|uninstall)( .*)?$"
+    policy: ASK
+    rule: RULE-DEP-002
+  - pattern: "^yarn (add|install|remove)( .*)?$"
+    policy: ASK
+    rule: RULE-DEP-002
+  - pattern: "^pnpm (add|install|remove)( .*)?$"
+    policy: ASK
+    rule: RULE-DEP-002
+
+  # ---- Long-running or state-changing ---------------------------------
+  - pattern: "^npm run (start|dev|serve)( .*)?$"
+    policy: ASK
+    rule: RULE-EXEC-002
+    purpose: starts a server that does not exit; not for a governed run
+  - pattern: "^alembic (upgrade|downgrade) .*"
+    policy: ASK
+    rule: RULE-EXEC-002
+  - pattern: "^npx (prisma migrate|prisma db push|sequelize(-cli)? db:migrate|knex migrate|typeorm migration:(run|revert)).*"
+    policy: ASK
+    rule: RULE-EXEC-002
+  - pattern: "^npm publish( .*)?$"
+    policy: ASK
+    rule: RULE-EXEC-003
+  - pattern: ".*(deploy|kubectl|helm|terraform apply).*"
+    policy: ASK
+    rule: RULE-EXEC-003
+
+  # ---- Never ----------------------------------------------------------
+  - pattern: "^git( .*)?$"
+    policy: BLOCK
+    rule: RULE-EXEC-001
+    purpose: this stack uses its own snapshots; Git is not part of the flow
+  - pattern: ".*(rm -rf|mkfs|dd if=|chmod 777).*"
+    policy: BLOCK
+    rule: RULE-EXEC-004
