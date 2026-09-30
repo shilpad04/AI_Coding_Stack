@@ -1,0 +1,11 @@
+# Test-only governance config. Same governance settings as config/config.yaml,
+# except the tests-with-code check (RULE-TEST-001) is off, so tests about other
+# rules (scope, plan approval, repair attempts) can use minimal one-file
+# proposals. The check itself is tested in tests/test_enforcement_checks.py.
+governance:
+  block_unapproved_packages: true
+  require_approval_for_install: true
+  require_approval_for_deployment: true
+  block_out_of_scope_changes: true
+  max_repair_attempts: 2
+  require_tests_with_code: false

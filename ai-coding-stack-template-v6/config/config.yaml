@@ -1,0 +1,69 @@
+# TSG AI Coding Kit — main configuration
+# Fill in every [FILL IN] value when you clone this skeleton.
+# Governance settings are locked — do not change them.
+
+ruleset:
+  version: "2026.08.2"
+
+llm:
+  # Supported providers: ollama | bedrock | openai | fake
+  # Use "fake" only for running tests locally without a real LLM.
+  provider: "[FILL IN — e.g. ollama | bedrock | fake]"
+  model: "[FILL IN — e.g. qwen2.5-coder:3b for ollama]"
+
+ollama:
+  base_url: "http://localhost:11434"  # default local Ollama; change if hosted remotely
+  timeout_seconds: 180
+
+bedrock:
+  region: "[FILL IN — e.g. us-east-1 | eu-west-1 | ap-south-1]"
+  model: "[FILL IN — e.g. anthropic.claude-3-5-sonnet-20241022-v2:0]"
+
+fake:
+  # "ok" returns a passing proposal; used for CI and local tests without a real LLM.
+  # Do not set llm.provider=fake in production.
+  scenario: ok
+
+context:
+  max_tokens: 12000
+  max_file_bytes: 40000
+
+governance:
+  block_unapproved_packages: true
+  require_approval_for_install: true
+  require_approval_for_deployment: true
+  block_out_of_scope_changes: true
+  max_repair_attempts: 2
+
+tests:
+  # CHANGE THIS. The default runs the STACK's own tests, not your project's.
+  # Join your frontend row and backend row from context.md -> Build / Run Commands.
+  command: "python -m pytest -q"
+
+snapshot:
+  exclude:
+    - "__pycache__"
+    - ".venv"
+    - "venv"
+    - "node_modules"
+    - "dist"
+    - "build"
+    - "coverage"
+    - ".pytest_cache"    # Python
+    - "*.pyc"            # Python
+    - "*.class"          # Java
+    - "target"           # Java/Maven
+    - ".gradle"          # Java/Gradle
+    - "*.o"              # C/C++/Go object files
+    - ".angular"         # Angular build cache
+    - ".vite"            # Vite cache
+    - "*.egg-info"       # Python packaging
+    - ".mypy_cache"      # Python type checker
+    - "**/generated"    # machine output — see context.md
+    # the stack writes these itself; they are control files, not project code
+    - ".ai/traceability.ndjson"
+    - ".ai/task-state.json"
+    - ".ai/plan.json"
+    - ".ai/snapshots"
+    - ".ai/proposals"
+    - "*.log"
