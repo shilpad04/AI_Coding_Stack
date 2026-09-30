@@ -1,0 +1,363 @@
+# Approved third-party packages. Anything not listed here is BLOCKED.
+# status: approved       -> may be used
+# status: needs_approval -> may be used only after human approval
+#
+# `module` is the name as it appears in an import statement. It is not always
+# the package name (jsonwebtoken is imported as jwt), and the hidden-import
+# check matches on it.
+packages:
+
+  # ---- Python (pypi) -------------------------------------------------
+  - name: requests
+    module: requests
+    ecosystem: pypi
+    versions: ">=2.31,<3.0"
+    status: approved
+    purpose: HTTP client
+  - name: pyyaml
+    module: yaml
+    ecosystem: pypi
+    versions: ">=6.0,<7.0"
+    status: approved
+    purpose: YAML parsing
+  - name: pytest
+    module: pytest
+    ecosystem: pypi
+    versions: ">=8.0"
+    status: approved
+    purpose: Testing
+  - name: email-validator
+    module: email_validator
+    ecosystem: pypi
+    versions: ">=2.0,<3.0"
+    status: needs_approval
+    purpose: RFC compliant email validation
+  - name: boto3
+    module: boto3
+    ecosystem: pypi
+    versions: ">=1.34"
+    status: needs_approval
+    purpose: AWS SDK (Bedrock provider only)
+  - name: fastapi
+    module: fastapi
+    ecosystem: pypi
+    versions: ">=0.100.0"
+    status: approved
+    purpose: Web framework for building APIs
+  - name: uvicorn
+    module: uvicorn
+    ecosystem: pypi
+    versions: ">=0.20.0"
+    status: approved
+    purpose: ASGI server implementation
+  - name: pydantic
+    module: pydantic
+    ecosystem: pypi
+    versions: ">=2.0.0"
+    status: approved
+    purpose: Data validation and settings management using Python type annotations
+
+
+  # ---- Node: server --------------------------------------------------
+  - name: express
+    module: express
+    ecosystem: npm
+    versions: ">=4.18,<5.0"
+    status: approved
+    purpose: HTTP server framework
+  - name: mongoose
+    module: mongoose
+    ecosystem: npm
+    versions: ">=8.0,<9.0"
+    status: approved
+    purpose: MongoDB object modelling
+  - name: cors
+    module: cors
+    ecosystem: npm
+    versions: ">=2.8,<3.0"
+    status: approved
+    purpose: Cross-origin request headers
+  - name: dotenv
+    module: dotenv
+    ecosystem: npm
+    versions: ">=16.0,<17.0"
+    status: approved
+    purpose: Load environment variables from .env
+  - name: bcryptjs
+    module: bcrypt
+    ecosystem: npm
+    versions: ">=2.4,<3.0"
+    status: approved
+    purpose: Password hashing (pure JS, no native build step)
+  - name: jsonwebtoken
+    module: jwt
+    ecosystem: npm
+    versions: ">=9.0,<10.0"
+    status: approved
+    purpose: JWT sign and verify
+  - name: express-validator
+    module: express-validator
+    ecosystem: npm
+    versions: ">=7.0,<8.0"
+    status: needs_approval
+    purpose: Request body validation
+
+  # ---- Node: client --------------------------------------------------
+  - name: react
+    module: React
+    ecosystem: npm
+    versions: ">=18.2,<19.0"
+    status: approved
+    purpose: UI library
+  - name: react-dom
+    module: ReactDOM
+    ecosystem: npm
+    versions: ">=18.2,<19.0"
+    status: approved
+    purpose: React browser renderer
+  - name: react-router-dom
+    module: react-router-dom
+    ecosystem: npm
+    versions: ">=6.20,<7.0"
+    status: approved
+    purpose: Client-side routing
+  - name: axios
+    module: axios
+    ecosystem: npm
+    versions: ">=1.6,<2.0"
+    status: needs_approval
+    purpose: HTTP client (built-in fetch is preferred; use only with a reason)
+
+  # ---- Node: build and test ------------------------------------------
+  - name: vite
+    module: vite
+    ecosystem: npm
+    versions: ">=5.0,<6.0"
+    status: approved
+    purpose: Frontend build and dev server
+  - name: jest
+    module: jest
+    ecosystem: npm
+    versions: ">=29.0,<30.0"
+    status: approved
+    purpose: Testing
+  - name: supertest
+    module: request
+    ecosystem: npm
+    versions: ">=6.3,<7.0"
+    status: approved
+    purpose: HTTP assertions against an Express app
+  - name: mongodb-memory-server
+    module: mongodb-memory-server
+    ecosystem: npm
+    versions: ">=9.0,<10.0"
+    status: approved
+    purpose: In-memory MongoDB so tests never touch a real database
+  - name: nodemon
+    module: nodemon
+    ecosystem: npm
+    versions: ">=3.0,<4.0"
+    status: needs_approval
+    purpose: Local dev auto-restart, never used inside a governed run
+
+  # ---- Node: Angular (MEAN) ------------------------------------------
+  - name: "@angular/core"
+    module: "@angular/core"
+    ecosystem: npm
+    versions: ">=17.0,<18.0"
+    status: approved
+    purpose: Angular framework core
+  - name: "@angular/common"
+    module: "@angular/common"
+    ecosystem: npm
+    versions: ">=17.0,<18.0"
+    status: approved
+    purpose: Angular common directives and HTTP client
+  - name: "@angular/forms"
+    module: "@angular/forms"
+    ecosystem: npm
+    versions: ">=17.0,<18.0"
+    status: approved
+    purpose: Angular forms
+  - name: "@angular/router"
+    module: "@angular/router"
+    ecosystem: npm
+    versions: ">=17.0,<18.0"
+    status: approved
+    purpose: Angular routing
+  - name: rxjs
+    module: rxjs
+    ecosystem: npm
+    versions: ">=7.8,<8.0"
+    status: approved
+    purpose: Reactive streams used by Angular
+  - name: typescript
+    module: typescript
+    ecosystem: npm
+    versions: ">=5.2,<6.0"
+    status: approved
+    purpose: TypeScript compiler
+  - name: jasmine-core
+    module: jasmine
+    ecosystem: npm
+    versions: ">=5.1,<6.0"
+    status: approved
+    purpose: Angular default test framework
+
+  # ---- Python: database (capability `db`) -----------------------------
+  - name: sqlalchemy
+    module: sqlalchemy
+    ecosystem: pypi
+    versions: ">=2.0,<3.0"
+    status: approved
+    purpose: ORM and database toolkit
+  - name: alembic
+    module: alembic
+    ecosystem: pypi
+    versions: ">=1.13,<2.0"
+    status: approved
+    purpose: Database migrations
+  - name: psycopg2-binary
+    module: psycopg2
+    ecosystem: pypi
+    versions: ">=2.9,<3.0"
+    status: needs_approval
+    purpose: PostgreSQL driver
+  - name: pymongo
+    module: pymongo
+    ecosystem: pypi
+    versions: ">=4.6,<5.0"
+    status: needs_approval
+    purpose: MongoDB driver
+
+  # ---- Python: FastAPI support ----------------------------------------
+  - name: python-dotenv
+    module: dotenv
+    ecosystem: pypi
+    versions: ">=1.0,<2.0"
+    status: approved
+    purpose: Load environment variables from .env
+  - name: pydantic-settings
+    module: pydantic_settings
+    ecosystem: pypi
+    versions: ">=2.0,<3.0"
+    status: approved
+    purpose: Typed settings loading, fail-fast on missing config
+  - name: httpx
+    module: httpx
+    ecosystem: pypi
+    versions: ">=0.26,<1.0"
+    status: approved
+    purpose: Async HTTP client, also FastAPI's test client transport
+  - name: pytest-asyncio
+    module: pytest_asyncio
+    ecosystem: pypi
+    versions: ">=0.23,<1.0"
+    status: approved
+    purpose: Async test support
+  - name: pytest-cov
+    module: pytest_cov
+    ecosystem: pypi
+    versions: ">=4.1,<7.0"
+    status: approved
+    purpose: Coverage measurement for the 80% requirement
+  - name: python-jose
+    module: jose
+    ecosystem: pypi
+    versions: ">=3.3,<4.0"
+    status: needs_approval
+    purpose: JWT sign and verify for FastAPI
+  - name: passlib
+    module: passlib
+    ecosystem: pypi
+    versions: ">=1.7,<2.0"
+    status: needs_approval
+    purpose: Password hashing
+
+  # ---- Node: database (capability `db`) -------------------------------
+  - name: typeorm
+    module: typeorm
+    ecosystem: npm
+    versions: ">=0.3,<0.4"
+    status: needs_approval
+    purpose: SQL ORM with migrations, alternative to mongoose
+  - name: pg
+    module: pg
+    ecosystem: npm
+    versions: ">=8.11,<9.0"
+    status: needs_approval
+    purpose: PostgreSQL driver
+
+  # ---- Node: server hardening and logging -----------------------------
+  - name: helmet
+    module: helmet
+    ecosystem: npm
+    versions: ">=7.1,<8.0"
+    status: approved
+    purpose: Secure HTTP headers on the Express app
+  - name: pino
+    module: pino
+    ecosystem: npm
+    versions: ">=8.17,<10.0"
+    status: approved
+    purpose: Structured logging (satisfies the named-logger rule)
+  - name: zod
+    module: zod
+    ecosystem: npm
+    versions: ">=3.22,<4.0"
+    status: approved
+    purpose: Schema validation for validators/ and DTO boundaries
+
+  # ---- Node: frontend state (folder `store/`) -------------------------
+  - name: "@reduxjs/toolkit"
+    module: "@reduxjs/toolkit"
+    ecosystem: npm
+    versions: ">=2.0,<3.0"
+    status: needs_approval
+    purpose: React state management for store/
+  - name: zustand
+    module: zustand
+    ecosystem: npm
+    versions: ">=4.5,<6.0"
+    status: needs_approval
+    purpose: Lightweight React state management, alternative to redux
+  - name: "@ngrx/store"
+    module: "@ngrx/store"
+    ecosystem: npm
+    versions: ">=17.0,<18.0"
+    status: needs_approval
+    purpose: Angular state management for store/
+
+  # ---- Node: Angular support ------------------------------------------
+  - name: "@angular/platform-browser"
+    module: "@angular/platform-browser"
+    ecosystem: npm
+    versions: ">=17.0,<18.0"
+    status: approved
+    purpose: Angular browser bootstrap
+  - name: "@angular/cli"
+    module: "@angular/cli"
+    ecosystem: npm
+    versions: ">=17.0,<18.0"
+    status: approved
+    purpose: Angular build and scaffold tooling
+  - name: karma
+    module: karma
+    ecosystem: npm
+    versions: ">=6.4,<7.0"
+    status: approved
+    purpose: Angular test runner
+
+  # ---- Node: React testing --------------------------------------------
+  - name: vitest
+    module: vitest
+    ecosystem: npm
+    versions: ">=1.2,<4.0"
+    status: approved
+    purpose: Test runner for Vite projects, alternative to jest
+  - name: "@testing-library/react"
+    module: "@testing-library/react"
+    ecosystem: npm
+    versions: ">=14.1,<17.0"
+    status: approved
+    purpose: Behaviour-focused React component tests

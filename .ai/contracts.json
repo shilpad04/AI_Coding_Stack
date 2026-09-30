@@ -1,0 +1,218 @@
+{
+  ".aistack/scripts/validate_proposal.py": {
+    "classes": {
+      "Proposal": {
+        "properties": [
+          "clarifications",
+          "commands",
+          "files",
+          "needs_clarification",
+          "packages",
+          "status",
+          "task_id"
+        ],
+        "methods": [
+          "__init__"
+        ],
+        "fields": []
+      },
+      "Changes": {
+        "properties": [],
+        "methods": [
+          "__init__"
+        ],
+        "fields": []
+      }
+    }
+  },
+  ".aistack/scripts/validators/__init__.py": {
+    "classes": {
+      "Result": {
+        "properties": [
+          "blocked",
+          "ok"
+        ],
+        "methods": [
+          "add",
+          "messages"
+        ],
+        "fields": [
+          "findings",
+          "name",
+          "status"
+        ]
+      }
+    }
+  },
+  "tests/test_apply.py": {
+    "classes": {
+      "TestTakeSnapshot": {
+        "properties": [],
+        "methods": [
+          "test_happy_path_returns_correct_hash",
+          "test_missing_file_skipped_gracefully",
+          "test_mix_of_present_and_missing",
+          "test_multiple_files"
+        ],
+        "fields": []
+      },
+      "TestApplyProposal": {
+        "properties": [],
+        "methods": [
+          "test_create_file_with_content",
+          "test_create_makes_parent_directories",
+          "test_delete_missing_file_is_noop",
+          "test_delete_removes_existing_file",
+          "test_modify_overwrites_existing_file",
+          "test_returns_all_touched_paths"
+        ],
+        "fields": []
+      },
+      "TestGate1BlocksApply": {
+        "properties": [],
+        "methods": [
+          "_write_proposal",
+          "test_file_not_written_when_gate1_fails"
+        ],
+        "fields": []
+      }
+    }
+  },
+  "tests/test_validators.py": {
+    "classes": {
+      "TestResult": {
+        "properties": [],
+        "methods": [
+          "test_add_ask_raises_severity",
+          "test_add_fail_beats_ask",
+          "test_combine_all_pass",
+          "test_combine_ask",
+          "test_combine_worst_wins",
+          "test_fail_not_downgraded_by_ask",
+          "test_initial_state_is_pass",
+          "test_messages"
+        ],
+        "fields": []
+      },
+      "TestPreflight": {
+        "properties": [],
+        "methods": [
+          "test_ask_when_decision_missing",
+          "test_multiple_decisions_partial_missing",
+          "test_pass_when_decision_in_acceptance_criteria",
+          "test_pass_when_decision_in_description"
+        ],
+        "fields": []
+      },
+      "TestValidateRules": {
+        "properties": [],
+        "methods": [
+          "test_ask_when_clarification_required",
+          "test_pass_when_proposal"
+        ],
+        "fields": []
+      },
+      "TestValidateScope": {
+        "properties": [],
+        "methods": [
+          "test_ask_protected_governance_file",
+          "test_ask_protected_governance_file_even_if_in_allowed",
+          "test_fail_out_of_scope_file",
+          "test_pass_allowed_files",
+          "test_pass_empty_files"
+        ],
+        "fields": []
+      },
+      "TestValidatePackages": {
+        "properties": [],
+        "methods": [
+          "test_ask_hidden_needs_approval_import",
+          "test_ask_needs_approval_package",
+          "test_fail_hidden_import_go",
+          "test_fail_hidden_import_typescript",
+          "test_fail_hidden_import_unknown",
+          "test_fail_unknown_package",
+          "test_pass_approved_hidden_import_typescript",
+          "test_pass_approved_package",
+          "test_pass_stdlib_import_ignored"
+        ],
+        "fields": []
+      },
+      "TestExtractImports": {
+        "properties": [],
+        "methods": [
+          "test_go_imports",
+          "test_java_imports",
+          "test_javascript_typescript_imports",
+          "test_python_imports"
+        ],
+        "fields": []
+      },
+      "TestClassifyCommand": {
+        "properties": [],
+        "methods": [
+          "test_allow_pytest",
+          "test_ask_pip_install",
+          "test_block_default_unmatched",
+          "test_block_git"
+        ],
+        "fields": []
+      },
+      "TestValidateCommands": {
+        "properties": [],
+        "methods": [
+          "test_ask_needs_approval_command",
+          "test_fail_blocked_command",
+          "test_pass_allowed_command",
+          "test_pass_no_commands"
+        ],
+        "fields": []
+      },
+      "TestValidateSecrets": {
+        "properties": [],
+        "methods": [
+          "test_fail_aws_key",
+          "test_fail_bearer_token",
+          "test_fail_hardcoded_password",
+          "test_fail_private_key_header",
+          "test_pass_clean_content"
+        ],
+        "fields": []
+      },
+      "TestValidateChanges": {
+        "properties": [],
+        "methods": [
+          "test_fail_placeholder_text",
+          "test_fail_syntax_error_python",
+          "test_non_python_not_syntax_checked",
+          "test_pass_complete_content",
+          "test_pass_valid_python",
+          "test_skip_delete_action"
+        ],
+        "fields": []
+      },
+      "TestValidateReconcile": {
+        "properties": [],
+        "methods": [
+          "_changes",
+          "_proposal_obj",
+          "test_fail_approved_file_missing_on_disk",
+          "test_fail_content_hash_mismatch",
+          "test_fail_delete_file_still_exists",
+          "test_fail_extra_file_on_disk",
+          "test_pass_exact_match"
+        ],
+        "fields": []
+      },
+      "TestShims": {
+        "properties": [],
+        "methods": [
+          "test_commands_shim_classify",
+          "test_result_shim_constants",
+          "test_scope_shim"
+        ],
+        "fields": []
+      }
+    }
+  }
+}
